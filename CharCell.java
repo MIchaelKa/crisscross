@@ -52,9 +52,9 @@ import java.awt.font.*;
 		g2D.draw( rect );		
 		g2D.drawString( s, (int)x, (int)y );
 	}
-	/**
+    /**
      * Set and get functions
-	 */
+     */
 	public void setValue ( char value ) { this.value = value; }
 	public char value () { return value; }
 	
