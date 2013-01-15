@@ -14,30 +14,22 @@ import java.awt.font.*;
 	private char value;		
 	private int variableCoord;	
 	public final static int CELL_SIZE = 30;
-	/**
-     * Конструктор по умолчанию
-	 */
+
 	public CharCell () {
 		this.value = ' ';
 		this.variableCoord = 0;		
 	}
-	/**
-     * Сoздает новую клетку с символом
-	 */
+
 	public CharCell( char value, int variableCoord ) {
 		this.value = value;
 		this.variableCoord = variableCoord;		
 	}
-	/**
-     * Сoздает новую клетку, копируя существуюшую
-	 */
+
 	public CharCell( CharCell cell ) {
 		this.value = cell.value();
 		this.variableCoord = cell.coord();		
 	}
-	/**
-     * Отрисовывает клетку и букву внутри неё
-	 */
+
 	public void showCharCell ( Graphics2D g2D, Font font, FontRenderContext context, int orient, int constCoord ) {
 		int coordX;
 		int coordY;
@@ -61,7 +53,7 @@ import java.awt.font.*;
 		g2D.drawString( s, (int)x, (int)y );
 	}
 	/**
-     * Set and get functions
+         * Set and get functions
 	 */
 	public void setValue ( char value ) { this.value = value; }
 	public char value () { return value; }
