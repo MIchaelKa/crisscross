@@ -20,12 +20,12 @@ public class WordArea extends JComponent {
 	private Font font;
 	private FontRenderContext context;
 	/**
-     * Размеры схемы 
+         * РЁРёСЂРёРЅР° Рё РІС‹СЃРѕС‚Р° СЃС…РµРјС‹
 	 */
 	private int width;
 	private int height;
 	/**
-     * Исходные слова 
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 
 	 */							
 	private List<String> rawWords;	
 	private int numberOfWord;	
@@ -62,7 +62,7 @@ public class WordArea extends JComponent {
 		}				
 	}
 	/**
-     * Переопределяем paintComponent
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ paintComponent
 	 */
 	@Override
  	public void paintComponent ( Graphics g ) {
@@ -74,7 +74,7 @@ public class WordArea extends JComponent {
 		showWords( g2D );
 	}	
 	/**
-     * Выводит готовую схему в графическом режиме. 
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. 
 	 */	
 	private void showWords ( Graphics2D g2D ) {
 		Iterator<Word> wordAreaIter = mainWordArea.iterator();		
@@ -82,8 +82,8 @@ public class WordArea extends JComponent {
 			wordAreaIter.next().showWord( g2D, font, context );		
 	}
 	/**
-     *  Перебор всех слов с возвратом (Backtracking) 
-	 *  Составляет схему крисс-кросс
+     *  пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (Backtracking) 
+	 *  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅ
 	 */	
 	private void wordsBackTracking ( ArrayWord<Word> wordArea, List<String> words ) {
 				
@@ -107,14 +107,14 @@ public class WordArea extends JComponent {
 		}						
 	}	
 	/**
-     * Сравнивает добавляемое слово с существующим и если возможно -
-	 * - добавляет его в схему ( true ).
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -
+	 * - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ ( true ).
 	 */		
 	private void addNewWord ( ArrayWord<Word> wordArea, List<String> words, String newWord ) {		
 		Word existentWord;			
 		for ( int k = 0 ; k < wordArea.size() ; k++ ) {
 			existentWord = wordArea.get(k);
-	        ///сравниваем символы в новом и уже занесенном словах
+	        ///пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			for ( int i = 0 ; i < existentWord.length() ; i++ ) {
 				for ( int j = 0 ; j < newWord.length() ; j++ ) {
 					if ( existentWord.get(i).value() == newWord.charAt(j) ) {									
@@ -122,18 +122,18 @@ public class WordArea extends JComponent {
 						int newWordCoord = existentWord.get(i).coord();
 						int initialVariableCoord = existentWord.coord() - j;
 						Word word = new Word ( newWord, newOrient, newWordCoord, initialVariableCoord );
-						///если слово "проходит" проверку - добавляем его
+						///пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 						int interCount = wordArea.intersectCount();
 						if ( check ( wordArea, word, existentWord.coord() ) ) {					
 							wordArea.add ( word );
-							///сохраняем смещение относительно (0,0) сохранив предыдущие
+							///пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (0,0) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 							int minX = wordArea.minX();
 							int minY = wordArea.minY();							
 							if ( existentWord.orientation() == Orientation.HORIZ ) 	wordArea.setMinY( initialVariableCoord );						
 							else wordArea.setMinX( initialVariableCoord );	
-							///запускаем косвенную рекурсию							
+							///пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ							
 							wordsBackTracking ( wordArea, words );	
-							///убираем последнее добавленное слово
+							///пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 							wordArea.remove( wordArea.size()-1 );
 							wordArea.reset();
 							wordArea.setMinX( minX );	
@@ -146,17 +146,17 @@ public class WordArea extends JComponent {
 		}		
 	} 
 	/**
-     *  Отклоняет потенциально не оптимальные частичные решения
+     *  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	 */	
 	private boolean reject ( ArrayWord<Word> wordArea, List<String> words ) {
 		
-		///площадь текущей схемы не больше площади полного решения		
+		///пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ		
 		int currentSize = sizeWordArea ( wordArea );
 		if (  currentSize >= sizeWordArea ) return true;
-		///плотность текущей схемы не меньше плотности полного решения	
+		///пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ	
 		double currentDensity = (double) wordArea.intersectCount() / currentSize;				
 		if ( currentDensity+alpha < density ) return true;		
-		///средняя длина слов в схеме меньше чем средняя длина оставшихся слов
+		///пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		double averageLengthWA = (double) sumWordLength(wordArea) / wordArea.size();
 		int sumLengthWL = 0;
 		Iterator<String> iter = words.iterator();		
@@ -168,7 +168,7 @@ public class WordArea extends JComponent {
 		return false;
 	}
 	/**
-     *  Проверяет является ли схема решением
+     *  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	 */	
 	private boolean accept ( ArrayWord<Word> wordArea ) {
 		if ( wordArea.size() == numberOfWord ) {
@@ -185,8 +185,8 @@ public class WordArea extends JComponent {
 		else return false;
 	}
 	/**
-     * Проверяет возможность добавления нового слова в найденное место	 
-	 * orient - ориентация добавляемого слова + находит число пересечений со словом
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ	 
+	 * orient - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	 */	
 	private boolean check ( ArrayWord<Word> wordArea, Word newWord, int intersect ) {
 	
@@ -203,7 +203,7 @@ public class WordArea extends JComponent {
 			word = wordAreaIter.next();
 			int existFirst = word.first();
 			int existLast = word.last();
-			///проверяем все слова в этом же положении что и добавляемое
+			///пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if ( word.orientation () == orient ) {				
 				if ( word.coord() == newWordCoord - 1 || word.coord() == newWordCoord + 1 ) {
 					if ( !(	(newFirst == existLast) && (newFirst == intersect) ) && 
@@ -217,9 +217,9 @@ public class WordArea extends JComponent {
 						 return false;
 				}								
 			}
-			///и в противоположном
+			///пїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			else {
-				///слова лежащие непосредственно в координах добавляемого слова
+				///пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				if ( range ( newFirst, newLast, word.coord() ) ) {
 					for ( int i = 0 ; i < word.length() ; i++ ) {
 						for ( int j = 0 ; j < newWord.length() ; j++ ) {
@@ -231,7 +231,7 @@ public class WordArea extends JComponent {
 					if ( ( existFirst == newWordCoord + 1 ) || ( existLast == newWordCoord - 1 ) ) 
 						return false;
 				}
-				///слова лежащие по бокам от добавляемого слова
+				///пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				if ( word.coord() == newFirst - 1 || word.coord() == newLast + 1 ) {
 					if ( range ( existFirst, existLast, newWordCoord ) ) 
 						return false;										
@@ -243,19 +243,19 @@ public class WordArea extends JComponent {
 		return true;
 	}	
 	/**
-     * Проверяет пересекаются ли 2 отрезка [a,b] и [c,d]	 
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ [a,b] пїЅ [c,d]	 
 	 */
 	private boolean intersect ( int a, int b, int c, int d ) {
 		return range(a,b,c)||range(a,b,d)||range(c,d,a)||range(c,d,b);
 	}
 	/**
-     * Проверяет принадлежит ли х отрезку [a,b]	 
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ [a,b]	 
 	 */
 	private boolean range ( int a, int b, int x ) {
 		return (x>=a) && (x<=b);
 	}	
 	/**
-     * Сравнивает двe схемы слов
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅe пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	 */
 	private boolean compareArrayWords ( ArrayWord<Word> a, ArrayWord<Word> b ) {
 		if ( a.size() != b.size() ||
@@ -279,7 +279,7 @@ public class WordArea extends JComponent {
 		
 	}
 	/**
-     * Сравнивает два слова 
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 
 	 */
 	private boolean compareWords ( Word a, Word b ) {
 		if ( a.orientation() != b.orientation() ||
@@ -294,7 +294,7 @@ public class WordArea extends JComponent {
 		return true;		
 	}
 	/**
-     * Рассчитывает размер(площадь) схемы   
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ(пїЅпїЅпїЅпїЅпїЅпїЅпїЅ) пїЅпїЅпїЅпїЅпїЅ   
 	 */
 	private int sizeWordArea ( ArrayWord<Word> wordArea ) {
 		if ( wordArea.size() == 0 ) return 0;
@@ -329,7 +329,7 @@ public class WordArea extends JComponent {
 		return ( width * height );
 	}
 	/**
-     * Рассчитывает суммарную длину слов схемы   
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ   
 	 */
 	private int sumWordLength ( ArrayWord<Word> wordArea ) {	
 		int result = 0;
@@ -339,7 +339,7 @@ public class WordArea extends JComponent {
 		return result;			
 	}
 	/**
-     * Устанавливает допустимые значения координат
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	 */	
 	private void assignCoordinate ( ArrayWord<Word> wordArea ) {		
 		Iterator<Word> wordAreaIter = wordArea.iterator();		
@@ -349,21 +349,21 @@ public class WordArea extends JComponent {
 		wordArea.reset();	
 	}	
 	/**
-     * Инвертирует положение	 
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ	 
 	 */	
 	private int invert ( int orient ) {
 		if ( orient == Orientation.HORIZ ) return Orientation.VERTIC;
 		else return Orientation.HORIZ;
 	}
 	/**
-     * Копирует массив слов 
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 
 	 */
 	private void copyArrayWord ( ArrayWord<Word> newArray, ArrayWord<Word> initialArray ) {
 		Iterator<Word> iter = initialArray.iterator();
 		while ( iter.hasNext() ) newArray.add( new Word( iter.next() ) );
 	}
 	/**
-     * Читает список слов из файла
+     * пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	 */
 	private void readWords () throws IOException {
 		rawWords = new LinkedList<String>();		
@@ -382,7 +382,7 @@ public class WordArea extends JComponent {
 		numberOfWord = rawWords.size();
 	}
 	/**
-     * Переключение между найденными схемами
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	 */	
     public void nextArea() {
 		if ( k < allWordArea.size() ) {
