@@ -20,7 +20,7 @@ public class WordArea extends JComponent {
 	private Font font;
 	private FontRenderContext context;
 	/**
-         * Ширина и высота схемы
+     * Ширина и высота схемы
 	 */
 	private int width;
 	private int height;
