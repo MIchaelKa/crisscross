@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Word
  * - a set of CharCell
  *
