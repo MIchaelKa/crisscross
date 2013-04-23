@@ -7,5 +7,5 @@
  
  public class Orientation {
     public final static int HORIZ = 0;
-    public final static int VERTIC = 1;
+    public final static int VERTIC = 1; 
  }
